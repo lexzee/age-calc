@@ -3,21 +3,28 @@
   min-width: 325px;
   margin: 0 auto;
   padding: 2rem;
-  /* text-align: center; */
   box-sizing: border-box;
+  text-align: center;
+}
+.body{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  place-items: center;
 }
 
 .App{
   position: relative;
   display: flex;
   flex-direction: column;
-  /* outline: 2px red solid; */
   border-radius: 1.5rem 1.5rem 4rem 1.5rem;
   padding: 3rem 1rem;
   background-color: white;
   min-width: 210px;
   max-width: 210px;
   margin: 3rem auto;
+  text-align: left;
 }
 
 .inputs{
@@ -50,9 +57,16 @@ label{
   font-weight: 900;
   color: hsl(0, 0%, 8%);
 }
+.input:hover, .input:focus{
+  border: 1px solid hsl(0, 1%, 44%);
+  outline: none;
+}
+.error{
+  color: hsl(0, 100%, 67%);
+  display: none;
+}
 
 .seperator{
-  /* outline: 1px solid green; */
   display: flex;
   position: relative;
   flex-direction: column;
@@ -73,6 +87,9 @@ hr{
   border-radius: 50%;
   width: 9%;
   padding: .9rem;
+}
+.submit:hover{
+  background-color: hsl(0, 0%, 8%);
 }
 
 
@@ -95,5 +112,55 @@ span{
 
 
 .attribution{
-  margin: 2rem;
+  /* margin: 2rem; */
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+
+/* Desktop Styling */
+
+@media (min-width: 725px) {
+  .body{
+    min-height: 100vh;
+  }
+  .App{
+    transform: scale(1.5);
+  }
+  .App{
+    padding: 2rem 2rem;
+    min-width: 350px;
+    max-width: 350px;
+  }
+
+  .seperator{
+    height: 5em;
+  }
+  .submit{
+    right: 0;
+    width: 9%;
+  }
+  .inputs, .output{
+    margin-right: 35%;
+  }
+
+  label{
+    font-size: .4rem;
+  }
+  .input{
+    width: 3.5em;
+  }
+
+  .output{
+    font-size: 3rem;
+  }
+
+  .attribution{
+    margin: 3rem 0;
+    font-size: 14px;
+    width: 100%;
+  }
 }
