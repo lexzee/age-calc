@@ -1,5 +1,7 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* padding: .005rem; */
+  background-color: hsl(0, 0%, 94%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

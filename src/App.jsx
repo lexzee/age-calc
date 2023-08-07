@@ -13,36 +13,36 @@ function App() {
               type="text"
               className="input"
               id="day"
-              value={"DD"}
+              value={"24"}
             />
           </label>
-          <label htmlFor="month" className="input">
+          <label htmlFor="month" className="month">
             MONTH
             <input
               type="text"
               className="input"
               id="month"
-              value={"MM"}
+              value={"09"}
             />
           </label>
-          <label htmlFor="year" className="input">
-            DAY
+          <label htmlFor="year" className="year">
+            YEAR
             <input
               type="text"
               className="input"
               id="year"
-              value={"YYYY"}
+              value={"1984"}
             />
           </label>
         </div>
         <div className="seperator">
           <hr />
-          <img src={submit} alt="" className="submit" style={{backgroundColor: 'blue', borderRadius: '50%', padding: '1rem', width: '5%'}}/>
+          <img src={submit} alt="" className="submit"/>
         </div>
         <div className="output">
-          <p><span className="years">{`- -`}</span> years</p>
-          <p><span className="months">{`- -`}</span> months</p>
-          <p><span className="days">{`- -`}</span> days</p>
+          <p><span className="years">{`38`}</span> years</p>
+          <p><span className="months">{`3`}</span> months</p>
+          <p><span className="days">{`26`}</span> days</p>
         </div>
       </div>
       <div class="attribution">
