@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import dayJs from 'dayjs'
 import './App.css'
 import submit from './assets/images/icon-arrow.svg'
 import dayjs from 'dayjs'
-// import { intervalToduration } from 'date-fns'
 
 function App() {
   const [input, setInput] = useState({
@@ -41,7 +39,6 @@ function App() {
   };
   const handleClick = ()=>{
     const enteredDate = new Date(`${input.year}-${input.month}-${input.day}`);
-    // const enteredDate = new Date(Date.UTC(input.year,input.month,input.day));
     const currentDate = new Date();
 
     const oldDate=dayjs(enteredDate.toISOString());
