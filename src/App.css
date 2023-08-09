@@ -63,7 +63,24 @@ label{
 }
 .error{
   color: hsl(0, 100%, 67%);
+  letter-spacing: normal;
+  font-size: .35rem;
+  font-weight: bold;
+  font-style: italic;
   display: none;
+  position: absolute;
+  top: 100%
+}
+.show{
+  display: block;
+}
+.dError{
+  position: relative;
+}
+.fError{
+  color: hsl(0, 100%, 67%);
+  border-color: hsl(0, 100%, 67%);
+  outline-color: hsl(0, 100%, 67%);
 }
 
 .seperator{
@@ -72,6 +89,7 @@ label{
   flex-direction: column;
   place-items: center;
   justify-content: center;
+  margin-top: 1rem;
   height: 5em;
 }
 
