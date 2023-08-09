@@ -95,7 +95,7 @@ function App() {
 
 
     const isDate = new Date(enteredDate);
-    
+
     //Validate form
     if (isDate !== "Invalid Date") {
       setIsValid(state => {
@@ -112,7 +112,7 @@ function App() {
         }
       })
     }
-    
+
     const checkInputs = ()=>{
       let isCorrect = !isValid.date && isValid.day && isValid.month && isValid.year;
       let check;
@@ -121,7 +121,7 @@ function App() {
       }
       return check;
     }
-    if (isDate !== "Invalid Date" && checkInputs) {
+    if (isDate !== "Invalid Date" && checkInputs()) {
       console.log(`${isDate == "Invalid Date" ? "Enter valid date" : isDate} `)
       const oldDate=dayjs(enteredDate.toDateString());
       const newDate=dayjs(currentDate.toDateString());
@@ -144,11 +144,8 @@ function App() {
         year: ''
       })
 
-      setIsValid({
-        date: true,
-        day: true,
-        month: true,
-        year: true,
+      setIsValid(state => {
+        return {...state, date:!state.date, day: true}
       })
     }
 
@@ -202,7 +199,7 @@ function App() {
             <small className={`error ${!isValid.year && 'show'}`}>Must be a in the past</small>
           </label>
         </div>
-        <small className={`error ${!isValid.date && 'show'} dError`}>Must be a valid date</small>
+        <small className={`error ${(!isValid.date && isValid)&& 'show'} dError`}>Must be a valid date</small>
         <div className="seperator">
           <hr />
           <img src={submit} alt="" className="submit" onClick={handleClick} />
