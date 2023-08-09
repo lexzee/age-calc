@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Check Solution](https://your-solution-url.com)
+- Live Site URL: [Visit Live Site](https://age-calc-lexzee.vercel.app)
 
 ## My process
 
@@ -58,9 +58,7 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
+I learnt a clean and precise way of calculating the difference between two dates
 
 ```js
 const getAgeDetails = (oldDate, newDate) => {
