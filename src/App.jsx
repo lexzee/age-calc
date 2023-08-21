@@ -95,8 +95,9 @@ function App() {
 
 
     const isDate = new Date(enteredDate);
+    console.log(isDate)
 
-    //Validate form
+    // Validate form
     if (isDate !== "Invalid Date") {
       setIsValid(state => {
         return {
@@ -115,21 +116,22 @@ function App() {
 
     const checkInputs = ()=>{
       let isCorrect = !isValid.date && isValid.day && isValid.month && isValid.year;
-      let check;
+      let check = false;
       if (isCorrect) {
         check = true;
       }
       return check;
     }
-    if (isDate !== "Invalid Date" && checkInputs()) {
+    if (isDate !== "Invalid Date" && checkInputs) {
+    // if (isDate !== "Invalid Date") {
       console.log(`${isDate == "Invalid Date" ? "Enter valid date" : isDate} `)
       const oldDate=dayjs(enteredDate.toDateString());
       const newDate=dayjs(currentDate.toDateString());
 
       const date = (`${input.year}-${input.month}-${input.day}`);
 
-      // console.log(`Date entered is ${enteredDate.toDateString()}`);
-      // console.log(`Current date: ${currentDate}`);
+      console.log(`Date entered is ${enteredDate.toDateString()}`);
+      console.log(`Current date: ${currentDate}`);
       // console.log(getAgeDetails(oldDate, newDate));
 
       setOutput({
