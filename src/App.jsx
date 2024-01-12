@@ -18,9 +18,9 @@ function App() {
   })
 
   const [output, setOutput] = useState({
-    day: "0",
-    month: "0",
-    year: "0",
+    day: 0,
+    month: 0,
+    year: 0,
   })
 
   // handle change
@@ -207,9 +207,9 @@ function App() {
           <img src={submit} alt="" className="submit" onClick={handleClick} />
         </div>
         <div className="output">
-          <p><span className="years">{output.year == 0 ? '--' : <CountUp end={output.year} duration={3}/>}</span> year{output.year > 1 && 's'}</p>
-          <p><span className="months">{output.month == 0 ? '--' : <CountUp end={output.month} duration={2}/>}</span> month{output.month > 1 && 's'}</p>
-          <p><span className="days">{output.day == 0 ? '--' : <CountUp end={output.day} duration={1}/>}</span> day{output.day > 1 && 's'}</p>
+          <p><span className="years">{output.year == "--" ? '--' : <CountUp end={output.year} duration={3}/>}</span> year{output.year > 1 && 's'}</p>
+          <p><span className="months">{output.month == '--' ? 0 : <CountUp end={output.month} duration={2}/>}</span> month{output.month > 1 && 's'}</p>
+          <p><span className="days">{output.day == '--' ? 0 : <CountUp end={output.day} duration={1}/>}</span> day{output.day > 1 && 's'}</p>
           {/* <p><span className="years">{output.year}</span> years</p>
           <p><span className="months">{output.month}</span> months</p>
           <p><span className="days">{output.day}</span> days</p> */}
