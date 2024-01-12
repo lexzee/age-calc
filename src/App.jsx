@@ -123,7 +123,6 @@ function App() {
       return check;
     }
     if (isDate !== "Invalid Date" && checkInputs) {
-    // if (isDate !== "Invalid Date") {
       console.log(`${isDate == "Invalid Date" ? "Enter valid date" : isDate} `)
       const oldDate=dayjs(enteredDate.toDateString());
       const newDate=dayjs(currentDate.toDateString());
@@ -132,7 +131,6 @@ function App() {
 
       console.log(`Date entered is ${enteredDate.toDateString()}`);
       console.log(`Current date: ${currentDate}`);
-      // console.log(getAgeDetails(oldDate, newDate));
 
       setOutput({
         day: getAgeDetails(oldDate, newDate).days,
@@ -210,9 +208,6 @@ function App() {
           <p><span className="years">{output.year == "--" ? '--' : <CountUp end={output.year} duration={3}/>}</span> year{output.year > 1 && 's'}</p>
           <p><span className="months">{output.month == '--' ? 0 : <CountUp end={output.month} duration={2}/>}</span> month{output.month > 1 && 's'}</p>
           <p><span className="days">{output.day == '--' ? 0 : <CountUp end={output.day} duration={1}/>}</span> day{output.day > 1 && 's'}</p>
-          {/* <p><span className="years">{output.year}</span> years</p>
-          <p><span className="months">{output.month}</span> months</p>
-          <p><span className="days">{output.day}</span> days</p> */}
         </div>
       </div>
       <div className="attribution">
