@@ -23,20 +23,6 @@ function App() {
     year: 0,
   })
 
-  // handle change
-  const handleChange = (e)=>{
-    setInput(state => {
-      return {
-        ...state,
-        [e.target.name]: e.target.value,
-      }
-    })
-
-    setIsValid(state => {
-      return {...state, [e.target.name]: true}
-    })
-  }
-
   const validateDay = ()=>{
     (input.day < 1 || input.day > 31) ?
       setIsValid(state => {
@@ -61,8 +47,6 @@ function App() {
     let today = new Date();
     const currentYear = today.getFullYear();
     const enteredDate = new Date(`${input.year}-${input.month}-${input.day}`);
-    const isDate = new Date(enteredDate);
-    console.log(isDate);
 
     (input.year < 1 || input.year > currentYear) ?
       setIsValid(state => {
@@ -72,6 +56,46 @@ function App() {
         return {...state, year: true}
       })
   }
+  // handle change
+  const handleChange = (e)=>{
+    setInput(state => {
+      return {
+        ...state,
+        [e.target.name]: e.target.value,
+      }
+    })
+
+    setIsValid(state => {
+      return {...state, [e.target.name]: true}
+    })
+
+    const inp = e.target.name;
+
+    switch (inp){
+      case "day":
+        validateDay()
+        break;
+      case "month":
+        validateMonth();
+        break;
+      case "year":
+        validateYear();
+        break;
+      default:
+        break
+    }
+  }
+
+
+  // useEffect(() => {
+    // validateDay();
+    // validateMonth();
+    // validateYear();
+  //   return () => {
+  //     null
+  //   }
+  // }, [input])
+
 
   //calculate Age
   const getAgeDetails = (oldDate, newDate) => {
@@ -95,42 +119,45 @@ function App() {
 
 
     const isDate = new Date(enteredDate);
-    console.log(isDate)
+
+    // const validateDate = (() => {
+    //   isValid.year
+    //     ? setIsValid(state => { return {...state, date: true}})
+    //     : setIsValid(state => {return {...state, date: false}})
+    // } )()
+
+    // validateDay()
+    // validateMonth()
+    // validateYear()
 
     // Validate form
-    if (isDate !== "Invalid Date") {
-      setIsValid(state => {
-        return {
-          ...state,
-          date: false,
-        }
-      })
-    } else {
-      setIsValid(state => {
-        return{
-          ...state,
-          date: true
-        }
-      })
-    }
+    // if (isDate !== "Invalid Date" && isValid.year) {
+    //   setIsValid(state => {
+    //     return {
+    //       ...state,
+    //       date: false,
+    //     }
+    //   })
+    // } else {
+    //   setIsValid(state => {
+    //     return{
+    //       ...state,
+    //       date: true
+    //     }
+    //   })
+    // }
 
-    const checkInputs = ()=>{
-      let isCorrect = !isValid.date && isValid.day && isValid.month && isValid.year;
-      let check = false;
-      if (isCorrect) {
-        check = true;
-      }
-      return check;
-    }
-    if (isDate !== "Invalid Date" && checkInputs) {
-      console.log(`${isDate == "Invalid Date" ? "Enter valid date" : isDate} `)
+    // alert(
+    //   `Year: ${isValid.year} \n
+    //   month: ${isValid.month} \n
+    //   day: ${isValid.day} \n
+    //   date: ${isValid.date}`,
+    // )
+    if (isDate !== "Invalid Date" && isValid.date) {
       const oldDate=dayjs(enteredDate.toDateString());
       const newDate=dayjs(currentDate.toDateString());
 
       const date = (`${input.year}-${input.month}-${input.day}`);
-
-      console.log(`Date entered is ${enteredDate.toDateString()}`);
-      console.log(`Current date: ${currentDate}`);
 
       setOutput({
         day: getAgeDetails(oldDate, newDate).days,
@@ -146,6 +173,12 @@ function App() {
 
       setIsValid(state => {
         return {...state, date:!state.date, day: true}
+      })
+    // alert("proceed")
+    } else {
+      alert("failed cred")
+      setIsValid(state => {
+        return {date:false, day: false, year: false, month: false}
       })
     }
 
@@ -165,7 +198,7 @@ function App() {
               name='day'
               value={input.day}
               placeholder='DD'
-              onChange={handleChange}
+              onChange={e => handleChange(e)}
               onBlur={validateDay}
               />
             <small className={`error ${!isValid.day && 'show'}`}>Must be a valid day</small>
@@ -179,7 +212,7 @@ function App() {
               name='month'
               value={input.month}
               placeholder='MM'
-              onChange={handleChange}
+              onChange={e => handleChange(e)}
               onBlur={validateMonth}
             />
             <small className={`error ${!isValid.month && 'show'}`}>Must be a valid month</small>
@@ -196,13 +229,20 @@ function App() {
               onChange={handleChange}
               onBlur={validateYear}
               />
-            <small className={`error ${!isValid.year && 'show'}`}>Must be a in the past</small>
+            <small className={`error ${!isValid.year && 'show'}`}>Must be in the past</small>
           </label>
         </div>
         <small className={`error ${(!isValid.date && isValid)&& 'show'} dError`}>Must be a valid date</small>
-        <div className="seperator">
-          <hr />
-          <img src={submit} alt="" className="submit" onClick={handleClick} />
+        <div
+          className="seperator"
+        >
+          <hr/>
+          <img
+            src={submit}
+            alt=""
+            className="submit"
+            onClick={handleClick}
+          />
         </div>
         <div className="output">
           <p><span className="years">{output.year == "--" ? '--' : <CountUp end={output.year} duration={3}/>}</span> year{output.year > 1 && 's'}</p>
